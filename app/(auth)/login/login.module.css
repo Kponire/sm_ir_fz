@@ -1,0 +1,187 @@
+/* src/app/(auth)/login/login.module.css */
+.root {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f8f2;
+  font-family: var(--font-nunito), sans-serif;
+}
+
+/* ── Left Brand Panel ── */
+.brandPanel {
+  width: 50%;
+  flex-shrink: 0;
+  background-color: #1e2b18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle geometric texture */
+.brandPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, transparent 0%, transparent 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      rgba(255, 255, 255, 0.025) 59px,
+      rgba(255, 255, 255, 0.025) 60px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      rgba(255, 255, 255, 0.025) 59px,
+      rgba(255, 255, 255, 0.025) 60px
+    );
+  pointer-events: none;
+}
+
+.brandPanel::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(70, 169, 8, 0.12);
+  bottom: -100px;
+  right: -80px;
+  pointer-events: none;
+}
+
+.brandInner {
+  position: relative;
+  z-index: 1;
+  padding: 48px 40px;
+  width: 100%;
+}
+
+.logoWrap {
+  /*   width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background-color: rgba(70, 169, 8, 0.15);
+  border: 1px solid rgba(70, 169, 8, 0.25); */
+  /*   display: flex;
+  align-items: center;
+  justify-content: center; */
+  margin-bottom: 14px;
+}
+
+.brandTitle {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.brandSubtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.featureDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #91d956;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.brandFooter {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Right Form Panel ── */
+.formPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+
+.formInner {
+  width: 100%;
+  max-width: 400px;
+}
+
+.mobileLogo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e3edd9;
+}
+
+.formHeader {
+  margin-bottom: 28px;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e2b18;
+  letter-spacing: -0.4px;
+}
+
+.loginBtn {
+  background-color: #46a908 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px;
+  height: 46px !important;
+}
+
+.loginBtn:hover {
+  background-color: #3a8c06 !important;
+}
+
+.googleBtn {
+  height: 46px !important;
+  border-color: #e3edd9 !important;
+  font-weight: 500 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .root {
+    flex-direction: column;
+  }
+  .brandPanel {
+    width: 100%;
+    min-height: 200px;
+    padding: 32px 24px;
+  }
+  .featureList {
+    display: none;
+  }
+  .brandFooter {
+    display: none;
+  }
+}
