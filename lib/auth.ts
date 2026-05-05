@@ -20,6 +20,8 @@ import { ID } from "appwrite";
   }
 }*/
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+
 export async function getCurrentUser(): Promise<AuthUser | null> {
   try {
     const res = await fetch("/api/auth/me", {
@@ -53,16 +55,13 @@ export async function loginWithEmail(email: string, password: string) {
 export async function loginWithGoogle() {
   return account.createOAuth2Session(
     "google" as never,
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/oauth/callback`,
-    `${process.env.NEXT_PUBLIC_APP_URL}/login?error=oauth_failed`,
+    `${baseUrl}/api/auth/oauth/callback`,
+    `${baseUrl}/login?error=oauth_failed`,
   );
 }
 
 export async function sendPasswordRecovery(email: string) {
-  return account.createRecovery(
-    email,
-    `${process.env.NEXT_PUBLIC_APP_URL}/reset-password`,
-  );
+  return account.createRecovery(email, `${baseUrl}/reset-password`);
 }
 
 export async function registerWithEmail(
