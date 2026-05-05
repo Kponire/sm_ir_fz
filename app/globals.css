@@ -1,6 +1,4 @@
-/* src/app/globals.css */
-
-/* Import Tailwind layers — corePlugins.preflight disabled to avoid Mantine conflicts */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 @tailwind utilities;
 
 :root {
@@ -18,6 +16,7 @@
 
   --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), "JetBrains Mono", monospace;
+  --font-nunito: var(--font-nunito-sans);
 }
 
 *,
