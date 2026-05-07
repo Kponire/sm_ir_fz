@@ -52,6 +52,7 @@ export default function HeroSection() {
       ref={ref}
       id="hero"
       style={{
+        paddingTop: "50px",
         position: 'relative',
         minHeight: '100vh',
         display: 'flex',
@@ -62,18 +63,18 @@ export default function HeroSection() {
       }}
     >
       {/* Background farm GIF */}
-      {/* <motion.div style={{ y, position: 'absolute', inset: 0, zIndex: 0 }}>
+      <motion.div style={{ y, position: 'absolute', inset: 0, zIndex: 0 }}>
         <img
-          src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXlhMWJlbnVudGZxd2Q4bGt5YjF3OGxtMGpuMzBiNml3Z3ZlcjJsMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2Z4lMPCfQEXkIw/giphy.gif"
+          src="hero_sec.gif"
           alt="Farm background"
           style={{
-            width: '100%', height: '110%',
+            width: '100%', height: '100%',
             objectFit: 'cover',
             objectPosition: 'center',
-            filter: 'brightness(0.28) saturate(0.6)',
+            //filter: 'brightness(0.28) saturate(0.6)',
           }}
         />
-      </motion.div> */}
+      </motion.div>
 
       {/* Overlay layers */}
       <div style={{
@@ -82,14 +83,14 @@ export default function HeroSection() {
       }} />
 
       {/* Subtle green grid overlay */}
-      <div style={{
+      {/* <div style={{
         position: 'absolute', inset: 0, zIndex: 2,
         backgroundImage: `
           linear-gradient(rgba(70,169,8,0.04) 1px, transparent 1px),
           linear-gradient(90deg, rgba(70,169,8,0.04) 1px, transparent 1px)
         `,
         backgroundSize: '64px 64px',
-      }} />
+      }} /> */}
 
       {/* Radial vignette */}
       <div style={{
@@ -108,7 +109,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            //fontFamily: '"Syne", sans-serif',
+            fontFamily: '"Syne", sans-serif',
             fontSize: 'clamp(2.8rem, 7vw, 5.5rem)',
             fontWeight: 700,
             lineHeight: 1.05,
@@ -158,7 +159,7 @@ export default function HeroSection() {
             maxWidth: '700px',
             margin: '0 auto 2.5rem',
             lineHeight: 1.75,
-            fontWeight: 300,
+            fontWeight: 600,
           }}
         >
           Croppeak_ng delivers real-time IoT intelligence for irrigation scheduling,
@@ -208,7 +209,7 @@ export default function HeroSection() {
               padding: '0.9rem 2rem',
               borderRadius: '30px',
               textDecoration: 'none',
-              fontFamily: '"DM Sans", sans-serif',
+              //fontFamily: '"DM Sans", sans-serif',
               fontWeight: 500,
               fontSize: '1rem',
               border: '1px solid rgba(255,255,255,0.12)',

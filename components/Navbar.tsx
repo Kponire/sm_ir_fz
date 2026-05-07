@@ -33,7 +33,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       style={{
-        position: 'static',
+        position: 'fixed',
         top: 0,
         left: 0,
         right: 0,

@@ -53,7 +53,9 @@ export const COLLECTIONS = {
   SENSOR_DATA: process.env.APPWRITE_COLLECTION_SENSOR_DATA ?? "sensor_data",
   SCHEDULES:
     process.env.APPWRITE_COLLECTION_SCHEDULES ?? "irrigation_schedules",
-  AUTOMATION:
+  RECORDS:
+    process.env.APPWRITE_COLLECTION_RECORDS ?? "irrigation_records",
+  AUTOMATION_SETTINGS:
     process.env.APPWRITE_COLLECTION_AUTOMATION ?? "automation_settings",
   NOTIFICATIONS:
     process.env.APPWRITE_COLLECTION_NOTIFICATIONS ?? "notifications",

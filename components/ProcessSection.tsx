@@ -17,7 +17,7 @@ const steps = [
     icon: RiSensorLine,
     title: 'Sensor Data Collection',
     subtitle: 'Edge Hardware Layer',
-    description: 'ESP8266-based nodes measure soil moisture, temperature, and rain detection. Data is dispatched via WiFi.',
+    description: 'Stm32-based nodes measure soil moisture, temperature, and rain detection. Data is dispatched via WiFi.',
     detail: 'DHT22 · Capacitive Probe',
     color: '#46A908',
   },
@@ -74,143 +74,79 @@ export default function HorizontalProcess() {
 
   return (
     <section
-
       id="process"
-
       ref={ref}
-
       style={{
-
         backgroundColor: '#080808',
-
         padding: '4rem 1.5rem',
-
         position: 'relative',
-
         overflow: 'hidden',
-
       }}
-
     >
 
       {/* Background grid */}
-
-      <div style={{
-
+      {/* <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-
         backgroundImage: `
-
           linear-gradient(rgba(70,169,8,0.03) 1px, transparent 1px),
-
           linear-gradient(90deg, rgba(70,169,8,0.03) 1px, transparent 1px)
-
         `,
-
         backgroundSize: '80px 80px',
-
-      }} />
-
+      }} /> */}
 
 
       {/* Ambient glow bottom-left */}
-
       <div style={{
-
         position: 'absolute', bottom: '-100px', left: '-100px',
-
         width: '500px', height: '500px', borderRadius: '50%',
-
         backgroundColor: 'rgba(70,169,8,0.04)',
-
         filter: 'blur(100px)', pointerEvents: 'none',
-
       }} />
-
-
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-
-
         {/* Header */}
-
         <motion.div
-
           initial={{ opacity: 0, y: 30 }}
-
           animate={inView ? { opacity: 1, y: 0 } : {}}
-
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-
           style={{ textAlign: 'center', marginBottom: '3rem' }}
-
         >
 
           <span style={{
-
             fontSize: '0.75rem',
-
             fontWeight: 600,
-
             textTransform: 'uppercase',
-
             color: '#46A908',
-
             display: 'block',
-
             marginBottom: '1rem',
-
           }}>
-
             How It Works
-
           </span>
 
           <div style={{
-
             fontSize: 'clamp(2rem, 4.5vw, 2.5rem)',
-
             fontWeight: 600,
-
             color: '#ffffff',
-
             letterSpacing: '-0.02em',
-
             lineHeight: 1.1,
-
             marginBottom: '1.2rem',
-
           }}>
-
             From Soil Sensor to Smart Action
-
           </div>
 
           <p style={{
-
             fontFamily: '"DM Sans", sans-serif',
-
             fontSize: '1rem',
-
             color: 'rgba(240,240,240,0.45)',
-
             maxWidth: '480px',
-
             margin: '0 auto',
-
             lineHeight: 1.75,
-
             fontWeight: 300,
-
           }}>
-
             Six tightly integrated layers working in concert hardware
-
             to cloud to insight to action.
-
           </p>
-
         </motion.div>
 
         {/* Timeline Grid */}

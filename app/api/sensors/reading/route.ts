@@ -1,5 +1,5 @@
 // src/app/api/sensors/reading/route.ts
-// POST: Called by ESP8266 to upload sensor readings
+// POST: Called by ESP32 to upload sensor readings
 // GET:  Called by dashboard to fetch latest reading
 
 import { NextRequest, NextResponse } from "next/server";
@@ -10,7 +10,7 @@ import {
   ID,
 } from "@/lib/appwrite-server";
 
-// ─── ESP8266 → Server: Upload reading
+// ─── ESP32 → Server: Upload reading
 
 export async function POST(req: NextRequest) {
   try {
@@ -90,9 +90,8 @@ export async function POST(req: NextRequest) {
     }
 
     // Auto-generate low-tank notification
-    if (tankLevel < 20) {
+    if (Boolean(tankLevel) === false) {
       try {
-        // Find userId from device registration
         const { Query } = await import("@/lib/appwrite-server");
         const devRes = await databases.listDocuments(
           DB_ID,
@@ -108,8 +107,8 @@ export async function POST(req: NextRequest) {
               userId: devRes.documents[0].userId,
               type: "critical",
               title: "Low Water Tank Alert",
-              body: `Tank level is at ${tankLevel}%. Refill required immediately.`,
-              isRead: false,
+              body: `Tank level is at ${tankLevel}. Refill required immediately.`,
+              read: false,
             },
           );
         }
@@ -124,8 +123,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error: msg }, { status: 500 });
   }
 }
-
-// ─── Dashboard → Server: Get latest reading
 
 export async function GET(req: NextRequest) {
   try {

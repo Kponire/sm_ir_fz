@@ -140,7 +140,7 @@ export default function AboutSection() {
             <div style={{
               borderRadius: '20px',
               overflow: 'hidden',
-              border: '1px solid rgba(70,169,8,0.18)',
+              //border: '1px solid rgba(70,169,8,0.18)',
               backgroundColor: '#111',
               position: 'relative',
               flex: 1, 
@@ -177,7 +177,7 @@ export default function AboutSection() {
               </div>
 
               {/* Floating metric — bottom-right */}
-              <motion.div
+{/*               <motion.div
                 initial={{ opacity: 0, scale: 0.7, x: 20 }}
                 animate={inView ? { opacity: 1, scale: 1, x: 0 } : {}}
                 transition={{ delay: 0.65, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -198,10 +198,10 @@ export default function AboutSection() {
                 <div style={{ fontSize: '0.72rem', color: '#666', marginTop: '3px' }}>
                   avg water saved
                 </div>
-              </motion.div>
+              </motion.div> */}
 
               {/* Bottom info bar */}
-              <div style={{
+              {/* <div style={{
                 padding: '1rem 1.25rem',
                 borderTop: '1px solid rgba(255,255,255,0.06)',
                 display: 'flex',
@@ -220,7 +220,7 @@ export default function AboutSection() {
                 }}>
                   v2.3.1
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* Decorative corner accent */}

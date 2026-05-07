@@ -25,12 +25,15 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/logo.png',
+  },
   title: {
-    default: "Smart Irrigation Dashboard",
-    template: "%s | Smart Irrigation",
+    default: "Automated Precision for Irrigation and Nutrient Management System",
+    template: "%s | Irrigation and Nutrient Management Sysytem",
   },
   description:
-    "Professional IoT-powered smart irrigation management system for farms.",
+    "Professional IoT-powered smart irrigation and nutrient management system for farms.",
   keywords: ["irrigation", "IoT", "smart farming", "ESP8266", "agriculture"],
 };
 

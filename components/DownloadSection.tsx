@@ -189,8 +189,8 @@ export default function DownloadSection() {
                   position: 'relative',
                   overflow: 'hidden',
                 }}
-                onMouseEnter={(e: React.MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(70,169,8,0.3)'; }}
-                onMouseLeave={(e: React.MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'; }}
+                //onMouseEnter={(e: React.MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(70,169,8,0.3)'; }}
+                //onMouseLeave={(e: React.MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'; }}
               >
                 {/* Corner badge */}
                 <div style={{
@@ -345,7 +345,7 @@ export default function DownloadSection() {
                         fontSize: '1.15rem', fontWeight: 700,
                         color: '#f0f0f0', margin: 0, lineHeight: 1.2,
                       }}>
-                        Download APIMS for {plat.label}
+                        Download croppeak_ng for {plat.label}
                       </h3>
                       <p style={{
                         fontFamily: '"DM Sans", sans-serif',

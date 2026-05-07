@@ -17,9 +17,9 @@ import {
 } from 'react-icons/ri';
 
 const contactInfo = [
-  { icon: RiMailLine, label: 'Email', value: 'hello@apims.io', href: 'mailto:hello@apims.io' },
+  { icon: RiMailLine, label: 'Email', value: 'hello@croppeakng.xyz', href: 'mailto:hello@croppeakng.xyz' },
   { icon: RiPhoneLine, label: 'Phone', value: '+234 800 000 0000', href: 'tel:+2348000000000' },
-  { icon: RiMapPinLine, label: 'Location', value: 'Lagos, Nigeria', href: '#' },
+  { icon: RiMapPinLine, label: 'Location', value: 'Ibadan, Nigeria', href: '#' },
 ];
 
 const socials = [
