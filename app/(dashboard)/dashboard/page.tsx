@@ -48,6 +48,7 @@ export default function UserDashboardPage() {
   console.log("Data: ", sensorData);
   const [loading, setLoading] = useState(false);
   const [cmdLoading, setCmdLoading] = useState<"start" | "stop" | null>(null);
+  const [cmdLoading_1, setCmdLoading_1] = useState(false);
 
   const firstName = user?.name?.split(" ")[0] ?? "Farmer";
 
@@ -83,8 +84,15 @@ export default function UserDashboardPage() {
         body: JSON.stringify({
           topic: "farm/commands",
           payload: {
-            command: cmd,
-            deviceId: "farm_node_001",
+            deviceId: "69ae542d003bd0c6cffd", // Match your ESP32 DEVICE_ID
+            type: "irrigation",               // REQUIRED by your ESP32 callback
+            command: cmd,                     // "start" or "stop"
+            duration: 15,                     // Default duration in minutes
+            zones: {                          // Structure expected by your ESP32
+              A: true,
+              B: true,
+              C: false,
+            },
           },
         }),
       });
@@ -104,6 +112,47 @@ export default function UserDashboardPage() {
       setCmdLoading(null);
     }
   };
+
+  const sendCommand_1 = async (type: "irrigation" | "fertigation", cmd: "start" | "stop", duration: number = 15) => {
+  //const loadingKey = `${type}-${cmd}`;
+  const loadingKey = `${cmd}`;
+  setCmdLoading_1(true);
+
+  try {
+    const res = await fetch("/api/mqtt/publish", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        topic: "farm/commands",
+        payload: {
+          deviceId: "farm_node_001",
+          type: type,        // Fixes the ESP32 null pointer crash
+          command: cmd,       // "start" or "stop"
+          duration: duration, // Duration in minutes
+          zones: { A: true, B: true, C: false } // Optional: zones structure
+        },
+      }),
+    });
+
+    if (!res.ok) throw new Error("Publish failed");
+
+    notifications.show({
+      title: `${type.charAt(0).toUpperCase() + type.slice(1)} ${cmd === "start" ? "Started" : "Stopped"}`,
+      message: `Command sent successfully${cmd === "start" ? ` for ${duration} mins` : ""}`,
+      color: "green",
+    });
+  } catch (error) {
+    notifications.show({
+      title: "Error",
+      message: `Failed to send ${type} command`,
+      color: "red",
+    });
+  } finally {
+    setCmdLoading_1(false);
+  }
+};
 
   if (!sensorData)
     return (
@@ -340,6 +389,35 @@ export default function UserDashboardPage() {
                 </Button>
               </Stack>
 
+              <Text fw={600} fz="xs" c="dimmed" mt="xs">FERTIGATION (NUTRIENTS)</Text>
+              <Group grow gap="xs">
+                <Button
+                  size="md"
+                  color="indigo"
+                  variant="filled"
+                  leftSection={<MdPlayArrow size={20} />}
+                  onClick={() => sendCommand_1("fertigation", "start", 10)} // Default 10 mins for fertilizer
+                  loading={cmdLoading_1}
+                  disabled={sensorData.fertPump || cmdLoading_1}
+                  style={{ fontWeight: 600 }}
+                  fullWidth
+                >
+                  Start
+                </Button>
+                <Button
+                  size="md"
+                  color="indigo"
+                  variant="light"
+                  leftSection={<MdStop size={20} />}
+                  onClick={() => sendCommand_1("fertigation", "stop")}
+                  loading={cmdLoading_1}
+                  disabled={!sensorData.fertPump || cmdLoading_1}
+                  fullWidth
+                >
+                  Stop
+                </Button>
+              </Group>
+
               <Divider my="md" color="#E3EDD9" />
 
               <Box>
@@ -385,7 +463,7 @@ export default function UserDashboardPage() {
           <Grid.Col span={{ base: 12, md: 4 }}>
             <Card withBorder radius="md" p="lg" h="100%" ta="center">
               <Text fw={700} fz="sm" c="#1E2B18" mb="md">
-                Pump Status
+                Irrigation Pump Status
               </Text>
               <Box
                 className={`${classes.pumpCircle} ${sensorData.pumpOn ? classes.pumpOn : classes.pumpOff}`}
@@ -398,6 +476,22 @@ export default function UserDashboardPage() {
               <Text fz="sm" c="dimmed" mt="md">
                 {sensorData.pumpOn
                   ? "Pump is actively irrigating"
+                  : "Pump is idle, ready for command"}
+              </Text>
+              <Text fw={700} pt="20px" fz="sm" c="#1E2B18" mb="md">
+                Fertigation Pump Status
+              </Text>
+              <Box
+                className={`${classes.pumpCircle} ${sensorData.fertPump ? classes.pumpOn : classes.pumpOff}`}
+              >
+                <FaArrowUpFromWaterPump size={70} />
+                <Text fw={800} fz="lg" mt={8}>
+                  {sensorData.fertPump ? "ON" : "OFF"}
+                </Text>
+              </Box>
+              <Text fz="sm" c="dimmed" mt="md">
+                {sensorData.fertPump
+                  ? "Pump is actively fertigating"
                   : "Pump is idle, ready for command"}
               </Text>
             </Card>

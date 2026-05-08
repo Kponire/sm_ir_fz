@@ -42,6 +42,7 @@ import { useAuth } from "@/hooks/useAuth";
 import styles from "./DashboardShell.module.css";
 import Image from "next/image";
 import { useSensorStore } from "@/store/useSensorStore";
+import { TfiControlShuffle } from "react-icons/tfi";
 
 interface NavItem {
   label: string;
@@ -60,7 +61,7 @@ const USER_NAV: NavItem[] = [
   {
     label: "Control",
     href: "/dashboard/control",
-    icon: <MdWaterDrop size={18} />,
+    icon: <TfiControlShuffle size={18} />,
   },
   {
     label: "Automation",
@@ -291,7 +292,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               fz={10}
               fw={700}
               c="rgba(255,255,255,0.3)"
-              style={{ letterSpacing: "1.5px", textTransform: "uppercase" }}
+              style={{ textTransform: "uppercase" }}
             >
               {isAdmin ? "Admin Menu" : "Navigation"}
             </Text>
@@ -324,17 +325,8 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                       {item.icon}
                     </Box>
                   }
-                  rightSection={
-                    item.badge ? (
-                      <Badge size="xs" color="brand" variant="filled">
-                        {item.badge}
-                      </Badge>
-                    ) : active ? (
-                      <MdChevronRight size={14} color="rgba(255,255,255,0.3)" />
-                    ) : null
-                  }
                   style={{
-                    borderRadius: 8,
+                    //borderRadius: 8,
                     backgroundColor: active ? "#2B601E" : "transparent",
                     transition: "background-color 0.15s ease",
                   }}

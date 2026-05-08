@@ -10,6 +10,8 @@ export interface SensorData {
   waterUsedToday: number;
   tankLevel: number;
   pumpOn: boolean;
+  fertPump: boolean;
+  tds: number;
   systemStatus: "online" | "offline" | "idle";
   deviceId?: string;
   updatedAt: string;

@@ -33,8 +33,8 @@ const platforms = [
     version: 'v1.0.0',
     size: '24.8 MB',
     requirements: 'Android 8.0+',
-    filename: 'apims-v1.0.0.apk',
-    downloadUrl: '/downloads/apims-v1.0.0.apk',
+    filename: 'croppeakng-debug.apk',
+    downloadUrl: '/croppeakng-debug.apk',  
     badge: 'APK',
   },
   {

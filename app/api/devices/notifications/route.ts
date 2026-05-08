@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       farmId,
     );
 
-    if (!farmSettings || !farmSettings.userId) {
+    if (!farmSettings) {
       return NextResponse.json(
         { success: false, error: "Farm owner not found" },
         { status: 404 },
